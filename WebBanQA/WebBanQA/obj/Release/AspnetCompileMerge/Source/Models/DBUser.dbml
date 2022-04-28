@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCuaHangBanQA" Class="DBUserDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=XUANDUZ\SQLEXPRESS;Initial Catalog=QLCuaHangBanQA;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLCuaHangBanQAConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="U_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="U_Fname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="U_Lname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="U_email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="U_status" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="U_add" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="U_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="U_contact" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="U_created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="U_pass" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

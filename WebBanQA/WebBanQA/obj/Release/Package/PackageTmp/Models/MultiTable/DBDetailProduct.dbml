@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLCuaHangBanQA" Class="DBDetailProductDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=XUANDUZ\SQLEXPRESS;Initial Catalog=QLCuaHangBanQA;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLCuaHangBanQAConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.catalog" Member="catalogs">
+    <Type Name="catalog">
+      <Column Name="CA_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CA_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CA_STID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="catalog_Product" Member="Products" ThisKey="CA_id" OtherKey="P_CAID" Type="Product" />
+      <Association Name="style_catalog" Member="style" ThisKey="CA_STID" OtherKey="ST_id" Type="style" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="P_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="P_discount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P_Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="P_image" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="P_note" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="P_amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="P_content" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="P_CAID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="P_slug" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Product_Size" Member="Sizes" ThisKey="P_id" OtherKey="S_PID" Type="Size" />
+      <Association Name="Product_Color" Member="Colors" ThisKey="P_id" OtherKey="COL_PID" Type="Color" />
+      <Association Name="catalog_Product" Member="catalog" ThisKey="P_CAID" OtherKey="CA_id" Type="catalog" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Size" Member="Sizes">
+    <Type Name="Size">
+      <Column Name="S_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="S_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="S_PID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Product_Size" Member="Product" ThisKey="S_PID" OtherKey="P_id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.style" Member="styles">
+    <Type Name="style">
+      <Column Name="ST_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ST_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ST_slug" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="style_catalog" Member="catalogs" ThisKey="ST_id" OtherKey="CA_STID" Type="catalog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Color" Member="Colors">
+    <Type Name="Color">
+      <Column Name="COL_id" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="COL_name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="COL_slug" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="COL_PID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Product_Color" Member="Product" ThisKey="COL_PID" OtherKey="P_id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
